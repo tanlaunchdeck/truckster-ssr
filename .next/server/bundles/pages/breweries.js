@@ -111,7 +111,7 @@ module.exports = require("react-redux");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return googleClientID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return facebookAppID; });
 //export const apiUrl = "http://52.14.177.231/"
-var apiUrl = "https://test.gotruckster.com/";
+var apiUrl = "http://test.gotruckster.com/";
 var googleApi = "AIzaSyAUYKV7F7rccvP7Pf67Jh_R6s1Unp2v82A";
 var googleClientID = "617001021912-4jd9lv4ut3nig7vrchouji9076rjs8pd.apps.googleusercontent.com";
 var facebookAppID = "2077048179191099";
