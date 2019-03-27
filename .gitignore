@@ -7,9 +7,9 @@
 /coverage
 
 # production
-/build
-/dist
-/.next
+#/build
+#/dist
+#/.next
 
 #sitemap
 /static/sitemap.xml
