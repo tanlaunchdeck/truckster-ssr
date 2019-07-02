@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import TruckDetail from './TruckDetail'
-import { getTruckDetail, getSuggestTruck } from '../../api/truckApi'
+import { getTruckDetail, getSuggestTruck, getAlbumDetail } from '../../api/truckApi'
 import { getTruckReview, postReview, markFavorite, unmarkFavorite, editReview } from '../../api/reviewApi'
 import { getDataInitial } from 'global'
 import AnnounceModal from '../common/announceModal/AnnounceModal'
@@ -60,9 +60,12 @@ class TruckDetailContainer extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        const { truckDetail } = nextProps
+        const { truckDetail, getAlbumDetail } = nextProps
         if (this.props.truckDetail !== truckDetail) {
             this.props.getSuggestTruck(truckDetail.id)
+
+            if (truckDetail.albums.length > 0)
+                getAlbumDetail({ albumID: truckDetail.albums[0].id, truckID: truckDetail.albums[0].food_truck_id })
         }
         if (truckDetail) {
 
@@ -122,16 +125,17 @@ class TruckDetailContainer extends Component {
         }
     }
     componentDidMount() {
-        const { truckDetail } = this.props
+        const { truckDetail, getAlbumDetail, getSuggestTruck, changeRoute } = this.props
         if (truckDetail) {
             // get suggest truck
             let cuisineStringArray = []
-
-            this.props.getSuggestTruck(truckDetail.id)
+            if (truckDetail.albums.length > 0)
+                getAlbumDetail({ albumID: truckDetail.albums[0].id, truckID: truckDetail.albums[0].food_truck_id })
+            getSuggestTruck(truckDetail.id)
 
             // change deep link route
-            this.props.changeRoute(
-                `gotrucksterconsumer://app/truck/${truckDetail.id}`
+            changeRoute(
+                `gotrucksterconsumer://app/foodtruck/${truckDetail.id}`
             )
             // Set location
             let locations = [], icon = "", events = []
@@ -367,7 +371,6 @@ class TruckDetailContainer extends Component {
     }
     render() {
         const { truckDetail, slug } = this.props
-
         return (
             <div>
                 {
@@ -378,29 +381,29 @@ class TruckDetailContainer extends Component {
                         <Head
                             url={"https://gotruckster.com/food-truck/" + `${slug}`}
                             title={truckDetail.name + " - Food Truck Denver, CO - Truckster"}
-                            description={truckDetail.company_description.length > 160 ?
+                            description={truckDetail.company_description && truckDetail.company_description.length > 160 ?
                                 truckDetail.company_description.substring(0, 160) :
                                 truckDetail.company_description}
-                            ogImage={truckDetail.cover_photo && truckDetail.cover_photo.length > 0 && truckDetail.cover_photo[0].url}
+                            ogImage={truckDetail.cover_photo && truckDetail.cover_photo[0].thumbnails && truckDetail.cover_photo[0].thumbnails.large.url}
                         >
                             <script type="application/ld+json" dangerouslySetInnerHTML={{
                                 __html: `{
                                 "@context": "http://schema.org",
                                 "@type": "LocalBusiness",
-                                "name": ${truckDetail.name},
-                                "telePhone": ${truckDetail.phone},                               
+                                "name": "${truckDetail.name}",
+                                "telePhone": "${truckDetail.phone}",                               
                                 "geo": {
                                     "@type": "GeoCoordinates",
-                                    "latitude": ${truckDetail.calendar && truckDetail.calendar.length > 0 && truckDetail.calendar[0].latitude},
-                                    "longitude":  ${truckDetail.calendar && truckDetail.calendar.length > 0 && truckDetail.calendar[0].longtitude}
+                                    "latitude": ${truckDetail.calendar && truckDetail.calendar.length > 0 && `"${truckDetail.calendar[0].latitude}"`},
+                                    "longitude":  ${truckDetail.calendar && truckDetail.calendar.length > 0 && `"${truckDetail.calendar[0].longtitude}"`}
                                 },
-                                "url": https://gotruckster.com/food-truck/${slug},
-                                "logo":${truckDetail.logo && truckDetail.logo.length > 0 && truckDetail.logo[0].url},
-                                "image":${truckDetail.cover_photo && truckDetail.cover_photo.length > 0 && truckDetail.cover_photo[0].url},
+                                "url": "https://gotruckster.com/food-truck/${slug}",
+                                "logo":${truckDetail.logo && truckDetail.logo.length > 0 && `"${truckDetail.logo[0].url}"`},
+                                "image":${truckDetail.cover_photo && truckDetail.cover_photo[0].thumbnails && `"${truckDetail.cover_photo[0].thumbnails.large.url}"`},
                                 "aggregateRating": {
                                     "@type": "AggregateRating",
-                                    "ratingValue":${truckDetail.avg_rating || 0},
-                                    "ratingCount": ${truckDetail.reviews_summary.total_reviews}
+                                    "ratingValue":"${truckDetail.avg_rating || 0}",
+                                    "ratingCount": "${truckDetail.reviews_summary.total_reviews}"
                                 }}`
                             }} >
                             </script>
@@ -447,7 +450,8 @@ export function mapStateToProps(state) {
         isLoadingEditReview: state.reviewReducer.isLoadingEditReview,
         isLoggedIn: state.authReducer.isLoggedIn,
         reviews: state.reviewReducer.reviews,
-        suggestTruck: state.truckReducer.suggestTruck
+        suggestTruck: state.truckReducer.suggestTruck,
+        albumDetail: state.truckReducer.albumDetail
 
     };
 }
@@ -461,8 +465,9 @@ export function mapDispatchToProps(dispatch) {
         getTruckReview,
         postReview,
         editReview,
-        changeRoute
-        , toggleCateringModal
+        changeRoute,
+        toggleCateringModal,
+        getAlbumDetail
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TruckDetailContainer);

@@ -149,7 +149,7 @@ const events = [
 class CityDetail extends Component {
     renderSmallEventCard(events) {
         return events.map((item, index) => {
-            return <div key={index} className="event-card-small-container">
+            return <Col lg={6} md={6} sm={12} key={index} className="event-card-small-container">
                 <a href={item.link} rel="nofollow" target="_blank" className="event-card-small">
                     <div>
                         <img src={item.image} alt="card" />
@@ -160,7 +160,7 @@ class CityDetail extends Component {
                         <div className="Body-1RegularGrayLeft">{item.desc}</div>
                     </div>
                 </a>
-            </div>
+            </Col>
         })
     }
     renderOffers(offers) {
@@ -239,7 +239,7 @@ class CityDetail extends Component {
     // render brewery card 
     renderBreweryCard(breweries) {
         return breweries.map((item, index) => {
-            return <Col style={{ marginBottom: "16px" }} key={index} sm={12} xs={24} md={24} lg={24}>
+            return <Col style={{ marginBottom: "16px" }} key={index} sm={12} xs={24} md={8} lg={8}>
                 <TruckNewCard data={
                     {
                         url: "/brewery/" + item.slug,
@@ -294,8 +294,6 @@ class CityDetail extends Component {
             error,
             activitiesWeek,
             errorActivity,
-            errorPairing,
-            featuredPairings,
             history,
             featuredBreweries,
             errorBrewery,
@@ -312,26 +310,7 @@ class CityDetail extends Component {
                 <div style={{ backgroundImage: `url(${homeImage})` }} className="home-main-header">
                     <div className="content-city">
                         <h1 className="title DisplayBlackCenter">Discover the Best Denver Food Trucks and Upcoming Events</h1>
-                        <div className="search">
-                            <SearchBar
-                                searchValue={searchValue}
-                                onSearchValueChange={onSearchValueChange}
-                                result={result}
-                                match={match}
-                                isHeader={false}
-                                history={history}
-
-                            />
-                            <div className="button-find">
-                                <Link prefetch to="/search">
-                                    <a>
-                                        <Button disabled={searchValue.length < 1 ? true : false} className="search-btn SubheadingWhiteCenter" size="large" type="primary">
-                                            Find trucks </Button>
-                                    </a>
-                                </Link>
-                            </div>
-                        </div>
-
+                        
                     </div>
 
                     <div className="cover">
@@ -341,7 +320,30 @@ class CityDetail extends Component {
 
                 {/* home body  */}
                 <div style={{ paddingTop: 0 }} className="body-content media">
-                    <Section url="/event/co/denver" seeall={true} title="What's Happening in Denver?" >
+
+                    <Section type="trucks" url="/food-truck/co/denver/all" title="Featured Food Trucks in Denver, CO" >
+                        <RenderContainer message="Something went wrong, please try another time!"
+                            error={error}  >
+                            <div >
+                                {
+                                    truckFeaturedCity ?
+                                        <Row gutter={16}>
+                                            {this.renderTruckCard(truckFeaturedCity)}
+                                        </Row> : <MediaQuery key='loader' maxWidth={768}>
+                                            {(matches) => {
+                                                return <LoadingPlaceHolder itemNum={matches ? 4 : 8} key='loader' />
+                                            }}
+                                        </MediaQuery>
+                                }
+                            </div>
+                        </RenderContainer>
+
+                    </Section>
+
+                    <hr />
+
+
+                    <Section type="events" url="/event/co/denver" seeall={true} title="What's Happening in Denver?" >
                         <RenderContainer message="Something went wrong, please try another time!"
                             error={errorActivity}  >
                             <div>
@@ -362,52 +364,28 @@ class CityDetail extends Component {
                         </RenderContainer>
                     </Section>
                     <hr />
-                    <Section url="/food-truck/co/denver/all" seeall={true} title="Featured Food Trucks in Denver, CO" >
+
+                    <Section type="breweries" url="/brewery/co/denver" seeall={true} title="Featured Breweries" >
                         <RenderContainer message="Something went wrong, please try another time!"
-                            error={error}  >
+                            error={errorBrewery}  >
+
                             <div>
                                 {
-                                    truckFeaturedCity ?
+                                    featuredBreweries && featuredBreweries.length > 0 ?
                                         <Row gutter={16}>
-                                            {this.renderTruckCard(truckFeaturedCity)}
+                                            {this.renderBreweryCard(featuredBreweries)}
                                         </Row> : <MediaQuery key='loader' maxWidth={768}>
                                             {(matches) => {
-                                                return <LoadingPlaceHolder itemNum={matches ? 4 : 8} key='loader' />
+                                                return <LoadingPlaceHolder itemNum={matches ? 2 : 2} key='loader' />
                                             }}
                                         </MediaQuery>
                                 }
                             </div>
-                        </RenderContainer>
 
+                        </RenderContainer>
                     </Section>
 
-                    <hr />
-
-
-                    <Row gutter={30}>
-                        <Col lg={12} md={12} sm={24} xs={24}>
-
-                            <Section url="/brewery/co/denver" seeall={true} title="Featured Breweries" >
-                                <RenderContainer message="Something went wrong, please try another time!"
-                                    error={errorBrewery}  >
-
-                                    <div>
-                                        {
-                                            featuredBreweries && featuredBreweries.length > 0 ?
-                                                <Row gutter={16}>
-                                                    {this.renderBreweryCard(featuredBreweries)}
-                                                </Row> : <MediaQuery key='loader' maxWidth={768}>
-                                                    {(matches) => {
-                                                        return <LoadingPlaceHolder itemNum={matches ? 2 : 2} key='loader' />
-                                                    }}
-                                                </MediaQuery>
-                                        }
-                                    </div>
-
-                                </RenderContainer>
-                            </Section>
-                        </Col>
-                        <Col lg={12} md={12} sm={24} xs={24}>
+                    {/* <Col lg={12} md={12} sm={24} xs={24}>
                             <Section url="/pairing/co/denver" seeall={true} title="Truck and Brewery Pairings" >
                                 <RenderContainer
                                     message="Something went wrong, please try another time!"
@@ -427,8 +405,8 @@ class CityDetail extends Component {
                                 </RenderContainer>
 
                             </Section>
-                        </Col>
-                    </Row>
+                        </Col> */}
+
                     <hr />
                     <section className="favorite-cuisine-container">
                         <h4 className="Display-2BlackCenter ">Favorite Cuisine in Denver </h4>
@@ -440,8 +418,11 @@ class CityDetail extends Component {
                     </section>
 
 
-                    {/* article section */}
-                    <div className="article-section media">
+                    
+
+                </div>
+                {/* article section */}
+                <div className="article-section media">
                         <div className="article-section-container">
                             <h2 className="Display-3WhiteCenter">Denver Food Truck Events & Festivals</h2>
 
@@ -455,12 +436,12 @@ class CityDetail extends Component {
 
                             <h3 className="article__title">Some of our Favorite Events:</h3>
 
-                            <div className="small-events-container" >
+                            <Row type="flex" justify="space-between" className="small-events-container" >
                                 {
                                     this.renderSmallEventCard(events)
                                 }
 
-                            </div>
+                            </Row>
                             <div className="article-card">
                                 {
                                     this.renderArticleCard(articles)
@@ -468,8 +449,6 @@ class CityDetail extends Component {
                             </div>
                         </div>
                     </div>
-
-                </div>
             </div>
         )
     }
