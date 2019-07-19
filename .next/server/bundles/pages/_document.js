@@ -67,36 +67,22 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 132);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ 132:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(133);
-
-
-/***/ }),
-
-/***/ 133:
+/***/ "./pages/_document.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyDocument; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document__ = __webpack_require__("next/document");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_document__);
+var _jsxFileName = "/Users/tannguyen/LaunchDeck/truckster_SSR/pages/_document.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -129,53 +115,139 @@ function (_Document) {
   _createClass(MyDocument, [{
     key: "render",
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("html", null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Head"], null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("html", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Head"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         name: "google-site-verification",
-        content: "W204RWXwNhuLH3zXanF_pqetzYMSwaH62yOO4evoSyw"
+        content: "W204RWXwNhuLH3zXanF_pqetzYMSwaH62yOO4evoSyw",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", {
         dangerouslySetInnerHTML: {
           __html: "(function (w, d, s, l, i) {\n          w[l] = w[l] || []; w[l].push({\n            'gtm.start':\n          new Date().getTime(), event: 'gtm.js'\n      }); var f = d.getElementsByTagName(s)[0],\n        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =\n          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);\n      })(window, document, 'script', 'dataLayer', 'GTM-5VKZ6ZK');"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("noscript", {
         dangerouslySetInnerHTML: {
-          __html: "  <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-5VKZ6ZK\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe>"
+          __html: "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-5VKZ6ZK\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe>"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", {
+        type: "application/ld+json",
+        dangerouslySetInnerHTML: {
+          __html: "{\n                        \"@context\": \"https://schema.org\",\n                        \"@type\": \"WebSite\",\n                        \"url\": \"https://www.gotruckster.com/\",\n                        \"potentialAction\": {\n                            \"@type\": \"SearchAction\",\n                            \"target\": \"https://dev.gotruckster.com/api/consumer/v1/search?keyword={search_term_string}\",\n                            \"query-input\": \"required name=search_term_string\"\n                            }\n                        }"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900",
-        rel: "stylesheet"
+        rel: "stylesheet",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
         charset: "UTF-8",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         rel: "stylesheet",
         type: "text/css",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         name: "viewport",
-        content: "width=device-width, initial-scale=1"
+        content: "width=device-width, initial-scale=1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         name: "p:domain_verify",
-        content: "2897f8053dbcc8124a8b6e082a3e6a37"
+        content: "2897f8053dbcc8124a8b6e082a3e6a37",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         property: "fb:2077048179191099",
-        content: "APPID"
+        content: "APPID",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         rel: "icon",
         sizes: "192x192",
-        href: "/static/touch-icon.png"
+        href: "/static/touch-icon.png",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         rel: "apple-touch-icon",
-        href: "/static/touch-icon.png"
+        href: "/static/touch-icon.png",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         rel: "mask-icon",
         href: "/static/favicon-mask.svg",
-        color: "#49B882"
+        color: "#49B882",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
         rel: "icon",
-        href: "/static/favicon.ico"
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("body", null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], null), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], null)));
+        href: "/static/favicon.ico",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
+      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("body", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 48
+        }
+      })));
     }
   }]);
 
@@ -186,11 +258,27 @@ function (_Document) {
 
 /***/ }),
 
-/***/ 134:
+/***/ 1:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./pages/_document.js");
+
+
+/***/ }),
+
+/***/ "next/document":
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
 
+/***/ }),
+
+/***/ "react":
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
 /***/ })
 
 /******/ });
+//# sourceMappingURL=_document.js.map

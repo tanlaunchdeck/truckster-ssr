@@ -67,43 +67,21 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 135);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
-
-var routes = __webpack_require__(3);
-
-module.exports = routes().add('about').add('help').add('contact').add('privacy').add('user').add('edit').add('nearby').add('search').add('intro').add('city').add('trucks').add('food-truck-catering').add('success', '/order/:success').add('info-detail', '/info/:slug').add('info', '/info/page/:page').add('pairing', '/pairing/:state/:city').add('events', '/event/:state/:city').add('event', '/event/:slug').add('breweries', '/brewery/:state/:city').add('brewery', '/brewery/:slug').add('brewery-type', '/brewery-type/:value').add('truck-detail-redirect', '/truck/:state/:city').add('truck-redirect', '/truck/:state/:city').add('food-truck', '/food-truck/:state/:city/all').add('truck', '/food-truck/:slug', 'truck').add('cuisine-redirect', '/cuisine/:value').add('cuisines', '/food-truck/:state/:city/cuisines').add('cuisine', '/food-truck/:state/:city/:value').add('cities', '/co').add('city-detail', '/food-truck/:state/:city').add('city-detail-redirect', '/:state/:city');
-
-/***/ }),
-
-/***/ 135:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(136);
-
-
-/***/ }),
-
-/***/ 136:
+/***/ "./pages/_error.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_components_common_errorPage_ErrorPage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_components_common_errorPage_ErrorPage__ = __webpack_require__("./src/components/common/errorPage/ErrorPage.js");
+var _jsxFileName = "/Users/tannguyen/LaunchDeck/truckster_SSR/pages/_error.js";
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -136,7 +114,11 @@ function (_Component) {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__src_components_common_errorPage_ErrorPage__["a" /* default */], {
-        status: 404
+        status: 404,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11
+        }
       });
     }
   }]);
@@ -148,26 +130,29 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports) {
+/***/ "./routes.js":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("next-routes");
+var routes = __webpack_require__("next-routes");
+
+module.exports = routes().add('about').add('help').add('contact').add('privacy').add('user').add('edit').add('nearby').add('search').add('intro').add('trucks').add('truck-owner').add('food-truck-catering').add('success', '/order/:success').add('info-detail', '/info/:slug').add('info', '/info/page/:page').add('pairing', '/pairing/:state/:city').add('events', '/event/:state/:city').add('event', '/event/:slug').add('brewery-detail', '/brewery/:slug').add('brewery').add('brewery-type', '/brewery-type/:value').add('food-trucks').add('truck-detail-redirect', '/truck/:state/:city').add('truck-redirect', '/truck/:state/:city').add('truck', '/food-truck/:slug', 'truck').add('cuisine-redirect', '/cuisine/:value').add('cuisines', '/food-truck/:state/:city/cuisines').add('food-truck', '/food-truck/:state/:city/all').add('city-detail', '/food-truck/:state/:city').add('city-detail-redirect', '/:state/:city').add('cuisine', '/food-truck/:state/:city/:value');
 
 /***/ }),
 
-/***/ 42:
+/***/ "./src/components/common/errorPage/ErrorPage.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button__ = __webpack_require__("antd/lib/button");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_antd_lib_button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_antd_lib_button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes__ = __webpack_require__("./routes.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__routes__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errorPage_less__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errorPage_less__ = __webpack_require__("./src/components/common/errorPage/_errorPage.less");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errorPage_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__errorPage_less__);
 
+var _jsxFileName = "/Users/tannguyen/LaunchDeck/truckster_SSR/src/components/common/errorPage/ErrorPage.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -239,29 +224,74 @@ function (_Component) {
       }
 
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        className: "error-container"
+        className: "error-container",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37
+        }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
         dangerouslySetInnerHTML: {
           __html: __WEBPACK_IMPORTED_MODULE_3__errorPage_less___default.a
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        className: "error-image"
+        className: "error-image",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("img", {
         alt: "error",
-        src: image
+        src: image,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
       })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        className: "error-detail"
+        className: "error-detail",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        className: "error-status"
+        className: "error-status",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
       }, status), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        className: "error-message"
+        className: "error-message",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        }
       }, message), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-        className: "return-button"
+        className: "return-button",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45
+        }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__routes__["Link"], {
         prefetch: true,
-        to: "/"
-      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("a", null, " ", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_button___default.a, {
-        type: "primary ButtonWhiteCenter"
+        to: "/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 46
+        }
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("a", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
+      }, " ", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_antd_lib_button___default.a, {
+        type: "primary ButtonWhiteCenter",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        }
       }, "Return Home "))))));
     }
   }]);
@@ -273,18 +303,41 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 43:
+/***/ "./src/components/common/errorPage/_errorPage.less":
 /***/ (function(module, exports) {
 
 module.exports = ".error-container {\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.error-container .error-detail {\n  padding-left: 60px;\n}\n.error-container .error-detail .error-status {\n  font-size: 60px;\n  font-weight: 600;\n}\n.error-container .error-detail .error-message {\n  font-size: 20px;\n  padding-bottom: 20px;\n}\n.error-container .error-detail .return-button button {\n  height: 48px;\n  width: 200px;\n}\n";
 
 /***/ }),
 
-/***/ 7:
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./pages/_error.js");
+
+
+/***/ }),
+
+/***/ "antd/lib/button":
 /***/ (function(module, exports) {
 
 module.exports = require("antd/lib/button");
 
+/***/ }),
+
+/***/ "next-routes":
+/***/ (function(module, exports) {
+
+module.exports = require("next-routes");
+
+/***/ }),
+
+/***/ "react":
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
 /***/ })
 
 /******/ });
+//# sourceMappingURL=_error.js.map

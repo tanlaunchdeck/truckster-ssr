@@ -6,7 +6,7 @@ import City from './City'
 import _city from './_city.less'
 
 import _cityCard from '../common/cityCard/_cityCard.less'
-
+import { getDataInitial } from '../../../global'
 class CityContainer extends Component {
     constructor(props) {
         super(props)
@@ -14,8 +14,17 @@ class CityContainer extends Component {
             hasMore: true
         }
     }
+    static async getInitialProps({ req, query }) {
+        let cities
 
+        cities = await getDataInitial("api/consumer/v1/city")
+
+        return {
+            cities
+        }
+    }
     render() {
+    
         return (
             <div className="gray-background">
 

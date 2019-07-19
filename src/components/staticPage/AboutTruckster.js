@@ -156,21 +156,21 @@ Everything Food Trucks`}
                             <div className="button-explore">
 
                                 <Button onClick={() => {
-                                    Router.push("/food-truck/co/denver")
+                                    Router.push("/food-trucks")
                                 }} type="primary">
 
-                                    <a className="ButtonWhiteCenter">
-                                        GO EXPLORE
+                                    <a className="SubheadingWhiteLeft">
+                                        Food Trucks
                                 </a>
 
                                 </Button>
 
                                 <Button onClick={() => {
-                                    Router.push("/food-truck-catering")
+                                    Router.push("/brewery")
                                 }} >
 
-                                    <a className="ButtonWhiteCenter">
-                                        CATERING
+                                    <a className="SubheadingWhiteLeft">
+                                        Breweries
                                 </a>
 
                                 </Button>

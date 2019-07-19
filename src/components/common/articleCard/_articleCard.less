@@ -4,7 +4,7 @@
 @bermuda: #77d7b9;
 @white: #fff;
 @open-sans: 'Open Sans',
-sans-serif;
+    sans-serif;
 // clear-fix mixin
 // Base styles
 
@@ -13,17 +13,21 @@ sans-serif;
     width: 350px;
     padding: 0 16px;
     margin-top: 24px;
+
     .card {
         .menu-content {
             margin: 0;
             padding: 0;
             list-style-type: none;
+
             li {
                 display: inline-block;
             }
+
             a {
                 color: @white;
             }
+
             span {
                 position: absolute;
                 left: 50%;
@@ -34,17 +38,20 @@ sans-serif;
                 transform: translate(-50%, 0);
             }
         }
+
         .wrapper {
             background-color: @white;
             min-height: 440px;
             position: relative;
             overflow: hidden;
             border-radius: 4px;
+
             &:hover {
                 .data {
                     transform: translateY(-280px);
                 }
             }
+
             .cover {
                 position: absolute;
                 width: 100%;
@@ -53,38 +60,60 @@ sans-serif;
                 background-image: linear-gradient(to bottom, rgba(69, 69, 69, 0), #212121);
             }
         }
+
         .data {
             position: absolute;
-            bottom: -220px;
+            bottom: -210px;
             width: 100%;
             transform: translateY(calc(70px + 1em));
             transition: transform 0.3s;
+
             .content {
                 padding: 1em;
                 position: relative;
                 z-index: 1;
+                padding-top: 20px;
+
                 .detail {
                     white-space: pre-line;
                 }
             }
         }
+
         .author {
             font-size: 12px;
         }
+
         .text {
             height: 70px;
             margin: 0;
         }
+
         input[type='checkbox'] {
             display: none;
         }
+
         input[type='checkbox']:checked+.menu-content {
             transform: translateY(-60px);
         }
-    } // Second example styles
+    }
+
+    // Second example styles
     .example-2 {
+        .title {
+            font-size: 20px;
+            font-weight: 800;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.2;
+            letter-spacing: -0.08px;
+            color: #ffffff;
+            padding-bottom: 20px;
+        }
+
         .wrapper {
             background: center / cover no-repeat;
+
             &:hover {
                 .menu-content {
                     span {
@@ -94,11 +123,13 @@ sans-serif;
                 }
             }
         }
+
         .data {
             height: 370px;
             color: @white;
             transform: translateY(calc(70px + 4em));
         }
+
         .button {
             &::after {
                 content: '\2192';
@@ -109,6 +140,7 @@ sans-serif;
                 transform: translate(0, -50%);
                 transition: all 0.3s;
             }
+
             &:hover {
                 &::after {
                     transform: translate(5px, -50%);

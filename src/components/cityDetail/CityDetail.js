@@ -8,14 +8,12 @@ import ArticleCard from '../common/articleCard/ArticleCard'
 
 import PairingCard from '../common/pairingCard/PairingCard'
 import EventCard from '../common/eventCard/EventCard'
-import CustomCarousel from '../common/CustomCarousel/CustomCarousel'
-import SearchBar from '../common/searchBar/SearchBar'
 import RenderContainer from '../common/renderContainer/RenderContainer'
 import MediaQuery from 'react-responsive';
 import LoadingPlaceHolder from '../common/placeholder/LoadingPlaceHolder'
 import Placeholder from '../common/placeholder/Placeholder'
 
-
+const imageEvent = ('/static/images/image-city-event.svg')
 const breweryIcon = ('/static/images/brewery-marker-icon.png')
 const imageBreweryPlaceholder = ("/static/images/image_brewery_placeholder.png")
 const civicCard = ("/static/images/civic-card.jpg")
@@ -150,14 +148,14 @@ class CityDetail extends Component {
     renderSmallEventCard(events) {
         return events.map((item, index) => {
             return <Col lg={6} md={6} sm={12} key={index} className="event-card-small-container">
-                <a href={item.link} rel="nofollow" target="_blank" className="event-card-small">
+                <a href={item.url} rel="nofollow" target="_blank" className="event-card-small">
                     <div>
                         <img src={item.image} alt="card" />
                     </div>
 
                     <div className="event-card-small-detail">
-                        <div className="Body-1RegularWhiteLeft">{item.name}</div>
-                        <div className="Body-1RegularGrayLeft">{item.desc}</div>
+                        <div className="SubheadingBlackLeft">{item.name}</div>
+                        <div className="Body-1RegularGrayLeft">{item.description}</div>
                     </div>
                 </a>
             </Col>
@@ -243,7 +241,7 @@ class CityDetail extends Component {
                 <TruckNewCard data={
                     {
                         url: "/brewery/" + item.slug,
-                        image: item.cover_photo ?
+                        image: item.cover_photo && item.cover_photo[0] && item.cover_photo[0].thumbnails ?
                             item.cover_photo[0].thumbnails.large.url : breweryIcon,
                         logo: item.logo ?
                             item.logo[0].url :
@@ -297,10 +295,7 @@ class CityDetail extends Component {
             history,
             featuredBreweries,
             errorBrewery,
-            match,
-            searchValue,
-            onSearchValueChange,
-            result
+            cityDetail
         } = this.props
 
         return (
@@ -310,7 +305,7 @@ class CityDetail extends Component {
                 <div style={{ backgroundImage: `url(${homeImage})` }} className="home-main-header">
                     <div className="content-city">
                         <h1 className="title DisplayBlackCenter">Discover the Best Denver Food Trucks and Upcoming Events</h1>
-                        
+
                     </div>
 
                     <div className="cover">
@@ -418,37 +413,45 @@ class CityDetail extends Component {
                     </section>
 
 
-                    
+
 
                 </div>
                 {/* article section */}
-                <div className="article-section media">
+                {
+                    cityDetail && <div className="article-section media">
                         <div className="article-section-container">
-                            <h2 className="Display-3WhiteCenter">Denver Food Truck Events & Festivals</h2>
+                            <div className="article-section--header">
+                                <div>
+                                    <h2 className="Display-4BlackLeft">{`${cityDetail.name} Food Truck Events & Festivals`}</h2>
 
-                            <div className="article-description Body-2RegularWhiteLeft">
-                                {`  Truckster is your gateway into the food truck community and lets you know about the best local food truck festivals and events happening throughout Colorado. Whether you are looking for a family friendly event, a unique brewery event, or a music festival, we’ve got you covered. Here are a few of our favorite regularly occurring events to keep you happy all year long. Be sure to go to the `} <a onClick={() => {
-                                    window.open("https://itunes.apple.com/us/app/truckster-denver-food-trucks/id1375284993?l=vi&ls=1&mt=8");
-                                }}>App Store</a> or <a onClick={() => {
-                                    window.open("https://play.google.com/store/apps/details?id=com.truckster");
-                                }}>Google Play</a> to download Truckster and find all the food truck events happening near you.
-                        </div>
+                                    <div className="article-description Body-2RegularBlackLeft">
+                                        {`${cityDetail.description}. Be sure to go to the `} <a onClick={() => {
+                                            window.open("https://itunes.apple.com/us/app/truckster-denver-food-trucks/id1375284993?l=vi&ls=1&mt=8");
+                                        }}>App Store</a> or <a onClick={() => {
+                                            window.open("https://play.google.com/store/apps/details?id=com.truckster");
+                                        }}>Google Play</a> to download Truckster and find all the food truck events happening near you.</div>
+                                </div>
+                                <img src={imageEvent} alt="events" />
+                            </div>
 
-                            <h3 className="article__title">Some of our Favorite Events:</h3>
+
+                            <h3 className="article__title Display-3BlackLeft">Some of our Favorite Events:</h3>
 
                             <Row type="flex" justify="space-between" className="small-events-container" >
                                 {
-                                    this.renderSmallEventCard(events)
+                                    this.renderSmallEventCard(cityDetail.event)
                                 }
 
                             </Row>
                             <div className="article-card">
                                 {
-                                    this.renderArticleCard(articles)
+                                    this.renderArticleCard(cityDetail.feature)
                                 }
                             </div>
                         </div>
                     </div>
+                }
+
             </div>
         )
     }

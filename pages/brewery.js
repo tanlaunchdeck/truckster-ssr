@@ -1,3 +1,3 @@
 
-import BreweryDetailContainer from '../src/components/breweryDetail/BreweryDetailContainer'
-export default BreweryDetailContainer 
+import BreweryContainer from '../src/components/brewery/BreweryContainer'
+export default BreweryContainer 

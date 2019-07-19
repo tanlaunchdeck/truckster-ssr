@@ -73,7 +73,7 @@ class BreweryDetailContainer extends Component {
         if (req && req.cookies) {
             token = req.cookies.token
         }
-        breweryDetail = await getDataInitial(`consumer/v1/breweries/slug/${query.slug}`, token)
+        breweryDetail = await getDataInitial(`api/consumer/v1/breweries/slug/${query.slug}`, token)
 
 
         return {
@@ -110,7 +110,7 @@ class BreweryDetailContainer extends Component {
     }
     render() {
         const { status, breweryDetail, slug } = this.props
-
+        console.log("qwe", this.props)
         return (
             <div>
                 {

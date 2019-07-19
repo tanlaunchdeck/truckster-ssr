@@ -2,6 +2,7 @@ import moment from 'moment'
 import axios from 'axios';
 import { Cookies } from 'react-cookie'
 import CircularJSON from 'circular-json'
+import { apiUrl } from "config"
 const cookies = new Cookies()
 var https = require("https");
 export function getSchedule(data) {
@@ -147,7 +148,7 @@ export const getDataInitial = (url, token) => {
     }
     return axios({
         method: 'get',
-        url: "https://dev.gotruckster.com/api/" + url,
+        url: apiUrl + url,
         httpsAgent: new https.Agent({ rejectUnauthorized: false }),
         headers: header
     })

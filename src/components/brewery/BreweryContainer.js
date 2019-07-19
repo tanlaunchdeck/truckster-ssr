@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { mountBrewery } from '../../actions/breweryAction'
-import { searchBrewery } from '../../api/breweryApi'
-
-import Head from '../head'
 import Brewery from './Brewery'
 
 import _brewery from './_brewery.less'
-
+import _cityCard from '../common/cityCard/_cityCard.less'
+import { getDataInitial } from '../../../global'
 class BreweryContainer extends Component {
     constructor(props) {
         super(props)
@@ -16,44 +13,27 @@ class BreweryContainer extends Component {
             hasMore: true
         }
     }
+    static async getInitialProps({ req, query }) {
+        let cities
 
-    componentDidMount() {
-        const { mountBrewery, searchBrewery } = this.props
-        mountBrewery()
-        searchBrewery("", "", 1)
-    }
+        cities = await getDataInitial("api/consumer/v1/city")
 
-    loadMoreBrewery() {
-        const { currentPage, lastPage, searchBrewery } = this.props
-
-        if (currentPage && lastPage) {
-            if (currentPage < lastPage)
-                searchBrewery("", "", currentPage + 1)
-
-            else if (currentPage === lastPage && currentPage) {
-                this.setState({
-                    hasMore: false
-                })
-            }
+        return {
+            cities
         }
     }
     render() {
-
+        console.log("tgis.prips", this.props)
         return (
-            <div>
+            <div className="gray-background">
+
                 <style dangerouslySetInnerHTML={{
-                    __html: _brewery
+                    __html: _cityCard + _brewery
                 }} />
-                <Head
-                    ogImage="https://dev.gotruckster.com/storage/avatars/0Mv5ywY5QF0o3WwybN0hBvhasU88RM4uKnjpL3Xx.png"
-                    url="https://gotruckster.com/brewery/co/denver"
-                    title="Denver Breweries Near Me – Menus, Reviews Catering & More"
-                    description="Check out the best breweries in Denver, CO featuring locally made craft beer, gourmet food and amazing happy hour deals! View directions, menus and reviews!"
-                />
                 <Brewery
                     {...this.state}
                     {...this.props}
-                    loadMoreBrewery={() => this.loadMoreBrewery()}
+
                 />
             </div>
 
@@ -62,16 +42,12 @@ class BreweryContainer extends Component {
 }
 export function mapStateToProps(state) {
     return {
-        error: state.breweryReducer.error,
-        breweries: state.breweryReducer.breweries,
-        currentPage: state.breweryReducer.currentPage,
-        lastPage: state.breweryReducer.lastPage
+
     };
 }
 export function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        mountBrewery,
-        searchBrewery
+
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(BreweryContainer);

@@ -36,15 +36,18 @@ class CityContainer extends Component {
     static async getInitialProps({ req, query }) {
         let activitiesWeek = null,
             truckFeaturedCity = null,
-            featuredPairings = null,
-            featuredBreweries = null
 
-        activitiesWeek = await getDataInitial("consumer/v1/activities?is_featured=true")
-        truckFeaturedCity = await getDataInitial("consumer/v1/foodtrucks?is_featured=true")
-        featuredPairings = await getDataInitial("consumer/v1/pairings?is_featured=true")
-        featuredBreweries = await getDataInitial("consumer/v1/breweries?is_featured=true")
+            featuredBreweries = null,
+            cityDetail = null
+
+        cityDetail = await getDataInitial(`api/consumer/v1/city/slug/${query.city}?state_short_name=${query.state}`)
+        activitiesWeek = await getDataInitial("api/consumer/v1/activities?is_featured=true")
+        truckFeaturedCity = await getDataInitial("api/consumer/v1/foodtrucks?is_featured=true")
+
+        featuredBreweries = await getDataInitial("api/consumer/v1/breweries?is_featured=true")
 
         let activitiesWeekState = []
+   
         activitiesWeek.data.forEach(element => {
             let timeTemp = ""
 
@@ -69,16 +72,16 @@ class CityContainer extends Component {
         return {
             activitiesWeek: activitiesWeekState,
             truckFeaturedCity: truckFeaturedCity.data ? truckFeaturedCity.data : [],
-            featuredPairings: featuredPairings.data,
+
             featuredBreweries: featuredBreweries.data,
+            cityDetail: cityDetail,
+            query
         }
     }
     componentDidMount() {
-        const { searchTruck, searchBrewery, getPairing, changeRoute } = this.props
+        const { searchTruck, searchBrewery, changeRoute } = this.props
         // searchActivity(true)
-        searchTruck("is_featured=true&city", "denver")
-        searchBrewery("is_featured", "true")
-        getPairing("is_featured=true&city", "denver")
+
         changeRoute(null)
     }
 
@@ -158,6 +161,7 @@ class CityContainer extends Component {
     }
 
     render() {
+        console.log("sd", this.props)
         return (
             <div>
                 <style dangerouslySetInnerHTML={{

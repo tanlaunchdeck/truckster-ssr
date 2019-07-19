@@ -1,4 +1,59 @@
+.city {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 48px 0;
 
-.category {
-    background: #fafafa;
+    @media only screen and (max-width: 768px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .title {
+        padding-top: 16px;
+    }
+
+    .desc {
+        max-width: 731px;
+        margin: 0 auto;
+    }
+
+    &__news {
+
+        padding-top: 124px;
+
+        :first-child {
+            img {
+                transform: rotate(-2deg) !important;
+                margin-right: 51px;
+                margin-left: 0;
+            }
+        }
+
+        &--item {
+            display: flex;
+            padding-bottom: 60px;
+
+            @media only screen and (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+            }
+        
+            img {
+                width: 403px;
+                height: 296px;
+                object-fit: contain;
+                transform: rotate(2deg) !important;
+                margin-left: 51px;
+            }
+
+            .title {
+                padding-top: 16px;
+            }
+
+            .desc {
+                padding-top: 16px;
+                white-space: pre-line;
+            }
+        }
+    }
 }

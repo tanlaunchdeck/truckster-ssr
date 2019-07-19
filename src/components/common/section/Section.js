@@ -16,7 +16,7 @@ class Section extends Component {
 
         return (
             <section className="section-block-main">
-                <div className="header">
+                <div className="header-block">
 
                     <h2 className="Display-2BlackLeft">
                         {title}
