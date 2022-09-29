@@ -27,7 +27,7 @@
     "lodash": "^4.17.11",
     "next-redux-wrapper": "^2.1.0",
     "next-routes": "^1.4.2",
-    "nuka-carousel": "^4.4.0",
+    "nuka-carousel": "^4.8.4",
     "raw-loader": "^0.5.1",
     "react": "^16.5.2",
     "react-big-calendar": "^0.19.2",
